@@ -8,6 +8,7 @@
 
 #include "commands/Autos.h"
 #include "commands/ExampleCommand.h"
+#include "commands/TankDrive.h"
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -19,8 +20,14 @@
 
 RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
+  DriveTrain();
 
-  DriveChain();
+  //default commands
+  m_drivetrain.SetDefaultCommand(TankDrive(
+
+      &m_drivetrain, [this] { return -m_driverController.GetLeftY(); },
+
+      [this] { return -m_driverController.GetRightX(); }));
   // Configure the button bindings
   ConfigureBindings();
 }

@@ -9,7 +9,7 @@
 
 #include "Constants.h"
 #include "subsystems/ExampleSubsystem.h"
-#include "subsystems/DriveChain.h"
+#include "subsystems/Drivetrain.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -41,7 +41,11 @@ class RobotContainer {
   frc2::CommandXboxController m_driverController{
       OperatorConstants::kDriverControllerPort};
 
+  frc2::CommandXboxController m_maniController{
+      OperatorConstants::kDriverManipulatorPort};
+
   // The robot's subsystems are defined here...
   ExampleSubsystem m_subsystem;
-  DriveChain m_drivechain;
+  // This is the DriveTrain subsystem object
+  DriveTrain m_drivetrain;
 };
